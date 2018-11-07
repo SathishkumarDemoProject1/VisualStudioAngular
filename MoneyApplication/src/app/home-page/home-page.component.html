@@ -1,0 +1,21 @@
+<div class="jumbotron text-align-center col-md-6">
+  <div class="container" style="margin-bottom: 8px">
+      <button  class="btn btn-default btn-sm" [disabled]="enableAdd" (click)="enableAdd=true;newValue=''">add</button> 
+  </div>
+  <div *ngIf="enableAdd" class="container"  style="margin-bottom: 8px" class="container mb-3">
+      <input type="text"   required [(ngModel)]="newValue"/>
+      <button class="btn btn-secondary btn-sm" style="margin-bottom: 2px" (click)="enableAdd=false" >Cancel</button> 
+      <button class="btn btn-primary btn-sm" style="margin-bottom: 2px" (click)="enableAdd=false;toDoAdd(newValue);">save</button> 
+  </div>
+  <div class="container mb-3 col-md-6" *ngFor="let todo of todos;index as i">
+    <input type="text" [disabled]="todo.key" required [(ngModel)]="todo.value"/>
+    <button type="button" class="close" (click)=deleteToDo(i) aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    <div class="mb-3">
+      <button *ngIf="todo.key" class="btn btn-danger btn-sm" (click)="todo.key=false">Edit</button> 
+      <button *ngIf="!todo.key" class="btn btn-secondary btn-sm" (click)="todo.key=true" >Cancel</button> 
+      <button *ngIf="!todo.key" class="btn btn-primary btn-sm" (click)="todo.key=true;toDoSave(todo.value,i)">save</button> 
+    </div>
+  </div>
+</div>

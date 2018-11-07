@@ -1,0 +1,24 @@
+<div class="container align-items-center">
+<form #loginForm="ngForm">
+  <div class="form-group">
+    <label>User name</label>
+    <input type="text" [class.is-invalid]="userName.touched && userName.invalid" #userName="ngModel" class="form-control" required name="username" ngModel>
+    <div *ngIf="userName.touched && userName.invalid" class="text-danger">
+                UserName required          
+    </div>
+  </div>
+  <div class="form-group">
+      <label>Password</label>
+      <input type="password" required class="form-control" name="password" ngModel>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" (click)="checkLoginCredential(loginForm.value)">Login</button>
+    <button type="submit" class="btn btn-primary" (click)="newRegisteration()">Register</button>
+  </div>
+  <div *ngIf="loginError" class="text-danger">
+      {{errorMessage}}
+  </div>
+  <a class="btn text-danger" (click)="forgetPassword()">Forget Password</a>
+</form>
+<!-- <router-outlet></router-outlet> -->
+</div>

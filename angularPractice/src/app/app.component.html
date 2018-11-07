@@ -1,0 +1,40 @@
+<div>{{greetingMessage}}</div>
+<div *ngIf="start then temp1 else temp2"></div>
+<ng-template #temp1>
+  block1
+  </ng-template>
+  <ng-template #temp2>
+  block2
+</ng-template>
+<div *ngFor="let a of list ; index as i ; odd as o ; even as e">
+  <ul>{{i+1 | number:'3.5-8'}} {{o}} {{e}} {{a | uppercase}}</ul>
+  <ul>{{i+1}} {{o}} {{e}} {{a | lowercase}}</ul>
+  <ul>{{i+1}} {{o}} {{e}} {{a | titlecase}}</ul>
+  <ul>{{i+1 | percent }} {{o}} {{e}} {{a | slice :2:3}}</ul>
+</div>
+<div [class]="className">
+  Hai
+</div>
+<div [class.greenClass]="green">
+    Hello
+</div>
+<div class="greenClass">
+Vanakkam
+</div>
+<div [ngSwitch]="color">
+<div *ngSwitchCase="'red'" [ngClass]="redClass">
+<h1>005</h1>
+</div>
+<div *ngSwitchCase="'white'" [ngClass]="whiteClass">
+<h1>006</h1>
+</div>
+<div *ngSwitchDefault>
+<h1>009</h1>
+</div>
+<div *ngSwitchCase="'green'" [ngClass]="greenClass">
+<h1>007</h1>
+</div>
+</div>
+<input type="checkbox" [(ngModel)]="showDiv"> show div
+<div *ngIf="showDiv">Welcome to damakka</div>
+<app-chiled-tag [ParentParam]="showDiv" (eventOut)="showDiv=false"></app-chiled-tag>
